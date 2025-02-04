@@ -3,8 +3,21 @@ Program: textanalysis.py
 Author: Ken
 Computes and displays the Flesch Index and the Grade
 Level Equivalent for the readability of a text file.
-"""
 
+Enter the file name: text.txt
+The Flesch Index is 72.80706451612906
+The Grade Level Equivalent is 6
+5 sentences
+62 words
+89 syllables
+
+Assignment Overview:
+Jack just completed the program for the Flesch text analysis Download Flesch text analysisfrom this chapter’s case
+ study. His supervisor, Jill, has discovered an error in his code. The error causes the program to count a syllable
+  containing consecutive vowels as multiple syllables. Suggest a solution to this problem in Jack’s code and modify
+   the program so that it handles these cases correctly.
+   
+"""
 # Take the inputs
 fileName = input("Enter the file name: ")
 inputFile = open(fileName, 'r')
