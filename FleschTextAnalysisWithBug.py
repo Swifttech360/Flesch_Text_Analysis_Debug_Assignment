@@ -1,80 +1,72 @@
 """
-Program: textanalysis.py
-Author: Ken
-Computes and displays the Flesch Index and the Grade
-Level Equivalent for the readability of a text file.
+Program Name: textanalysis.py
 
-Enter the file name: text.txt
-The Flesch Index is 72.80706451612906
-The Grade Level Equivalent is 6
-5 sentences
-62 words
-89 syllables
+Authors:
+    Miles Butler
+    William Ruben
 
-Assignment Overview:
-Jack just completed the program for the Flesch text analysis Download Flesch text analysisfrom this chapter’s case
- study. His supervisor, Jill, has discovered an error in his code. The error causes the program to count a syllable
-  containing consecutive vowels as multiple syllables. Suggest a solution to this problem in Jack’s code and modify
-   the program so that it handles these cases correctly.
+Description:
+    This program allows the user to select a text file (txt, rtf, MD, etc) by entering its name before displaying the
+    number of words, sentences, and syllables found within the file's text. In adition, this program also 
+    
+Date Published: 2025-02-05
+
+
    
 """
 
-def badSuffix():
-    global wordSyllables
-    print('caught the bad suffix')
-    wordSyllables -= 1
+import syllapy
+
+def Vowel_Count(fullText):
+    """
+    Count the number of vowels in any string
     
-
-# Take the inputs
-fileName = input("Enter the file name: ")
-inputFile = open(fileName, 'r')
-text = inputFile.read()
-
-# Count the sentences
-sentences = text.count('.') + text.count('?') + \
-            text.count(':') + text.count(';') + \
-            text.count('!')
-
-# Count the words
-words = len(text.split())
-
-suffixes = ['es', 'ed', 'e']
-
-# Count the syllables
-syllables = 0
-vowels = "aeiouAEIOU"
-for word in text.split():
-    wordSyllables = 0
-    for vowel in vowels:
-        wordSyllables += word.count(vowel)
-    if word.endswith('e'):
-        badSuffix()
-    elif word.endswith('es'):
-        badSuffix()
-    elif word.endswith('ed'):
-        badSuffix()
-    ##for ending in ['es', 'ed', 'e']:
+    :param fullText: The text in which vowels will be counted
+    :type fullText: str
+    :return: The number of vowels found in the "fullText" string.
+    :rtype: int
+    """
+    global syllables
+    textNumList = []
+    fullText = fullText.split()
+    for word in fullText:
+        x = int(syllapy._syllables(word))
+        textNumList.append(x)
+    return sum(textNumList)
+while True:
+    # Take the inputs
+    fileName = input("Enter the file name: ")
+    try:
+        inputFile = open(fileName, 'r')
+    except FileNotFoundError:
+        print('File Not Found\nPlease make sure this file is in the same folder as this program.\n')
+        continue
+    text = inputFile.read()
     
-    #if any(word.endswith(suffix) for suffix in suffixes):
-     #   print('caught the bad suffix')
-      #  wordSyllables -= 1
-    #if word.endswith('le'):
-     #   wordSyllables += 1
-    if 'ua' in word:
-        wordSyllables -= 1
-    if 'au' in word:
-        wordSyllables -= 1
-    syllables += wordSyllables
-
-# Compute the Flesch Index and Grade Level
-index = 206.835 - 1.015 * (words / sentences) - \
-        84.6 * (syllables / words)
-level = int(round(0.39 * (words / sentences) + 11.8 * \
-                  (syllables / words) - 15.59))
-
-# Output the results
-print("The Flesch Index is", index)
-print("The Grade Level Equivalent is", level)
-print(sentences, "sentences")
-print(words, "words")
-print(syllables, "syllables")   
+    # Count the sentences
+    sentences = text.count('.') + text.count('?') + \
+                text.count(':') + text.count(';') + \
+                text.count('!')
+    
+    # Count the words
+    words = len(text.split())
+    
+    suffixes = ['es', 'ed', 'e']
+    
+    # Count the syllables
+    syllables = Vowel_Count(text)
+    
+    
+    
+    # Compute the Flesch Index and Grade Level
+    index = 206.835 - 1.015 * (words / sentences) - \
+            84.6 * (syllables / words)
+    level = int(round(0.39 * (words / sentences) + 11.8 * \
+                      (syllables / words) - 15.59))
+    
+    # Output the results
+    print("The Flesch Index is", index)
+    print("The Grade Level Equivalent is", level)
+    print(sentences, "sentences")
+    print(words, "words")
+    print(syllables, "syllables")
