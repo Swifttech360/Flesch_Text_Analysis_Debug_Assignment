@@ -19,7 +19,11 @@ Jack just completed the program for the Flesch text analysis Download Flesch tex
    
 """
 
-
+def badSuffix():
+    global wordSyllables
+    print('caught the bad suffix')
+    wordSyllables -= 1
+    
 
 # Take the inputs
 fileName = input("Enter the file name: ")
@@ -34,17 +38,33 @@ sentences = text.count('.') + text.count('?') + \
 # Count the words
 words = len(text.split())
 
+suffixes = ['es', 'ed', 'e']
+
 # Count the syllables
 syllables = 0
 vowels = "aeiouAEIOU"
 for word in text.split():
+    wordSyllables = 0
     for vowel in vowels:
-        syllables += word.count(vowel)
-    for ending in ['es', 'ed', 'e']:
-        if word.endswith(ending):
-            syllables -= 1
-    if word.endswith('le'):
-        syllables += 1
+        wordSyllables += word.count(vowel)
+    if word.endswith('e'):
+        badSuffix()
+    elif word.endswith('es'):
+        badSuffix()
+    elif word.endswith('ed'):
+        badSuffix()
+    ##for ending in ['es', 'ed', 'e']:
+    
+    #if any(word.endswith(suffix) for suffix in suffixes):
+     #   print('caught the bad suffix')
+      #  wordSyllables -= 1
+    #if word.endswith('le'):
+     #   wordSyllables += 1
+    if 'ua' in word:
+        wordSyllables -= 1
+    if 'au' in word:
+        wordSyllables -= 1
+    syllables += wordSyllables
 
 # Compute the Flesch Index and Grade Level
 index = 206.835 - 1.015 * (words / sentences) - \
