@@ -13,10 +13,43 @@ Description:
 Date Published: 2025-02-05
 
 """
+import subprocess
+import sys
+download_pip = ''
+download_syllapy = ''
+try:
+    import pip
+except ImportError:
+    
+    download_pip = input("pip is needed to run this program, but wasn't found within your system.\nWould you like "
+                         "to install it now? (y/n): ").upper()
+    
+if download_pip == 'Y':
+    print('pip installing...')
+    subprocess.run([sys.executable, "-m", "ensurepip", "--default-pip"])
+    import pip
+    print('pip installed!')
+    
 
-import syllapy
+try:
+    import syllapy
+except ImportError:
+    download_syllapy = input("The syllapy package is needed to run this program, but wasn't found within your "
+                             "system.\nWould you like to install it now? (y/n): ").upper()
+    if download_syllapy == 'Y':
+        print('installing syllapy:')
+        subprocess.run([sys.executable, "-m", "pip", "install", 'syllapy'], check=True)
+        print("Installation Successful")
+    try:
+        import syllapy
+    except ImportError:
+        print("One or more packages still missing. Please see the README.MD file, or try installing pip and syllapy "
+          "through the bash console. ")
+        exit()
+
 
 def Vowel_Count(fullText):
+
     """
     Count the number of vowels in any string
     
