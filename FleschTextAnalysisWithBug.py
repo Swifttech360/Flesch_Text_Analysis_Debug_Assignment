@@ -18,6 +18,9 @@ Jack just completed the program for the Flesch text analysis Download Flesch tex
    the program so that it handles these cases correctly.
    
 """
+
+
+
 # Take the inputs
 fileName = input("Enter the file name: ")
 inputFile = open(fileName, 'r')
