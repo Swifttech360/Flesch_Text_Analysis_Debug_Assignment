@@ -3,7 +3,7 @@
 Program Name: TextAnalysis.py
 
 Authors:
-    Miles Butler
+    Miles Butler,
     William Ruben
 
 Description:
