@@ -17,35 +17,48 @@ import subprocess
 import sys
 download_pip = ''
 download_syllapy = ''
+download_setuptools = ''
 try:
     import pip
 except ImportError:
     
     download_pip = input("pip is needed to run this program, but wasn't found within your system.\nWould you like "
                          "to install it now? (y/n): ").upper()
-    
 if download_pip == 'Y':
     print('pip installing...')
     subprocess.run([sys.executable, "-m", "ensurepip", "--default-pip"])
-    import pip
     print('pip installed!')
+    import pip
+try:
+    import setuptools
+except ImportError:
+    download_setuptools = input("A small package if pip installation tools are required to run this program, "
+                                "but they weren't found within your directory\nWould you like to install them now?"
+                                " (y/n): ").upper()
+    if download_setuptools == 'Y':
+        print('Installing setup tools...')
+        subprocess.run([sys.executable, "-m", "pip", "install", "setuptools"], check=True)
+        print("Installation Successful")
+        import setuptools
     
-
+ 
+   
 try:
     import syllapy
 except ImportError:
     download_syllapy = input("The syllapy package is needed to run this program, but wasn't found within your "
                              "system.\nWould you like to install it now? (y/n): ").upper()
     if download_syllapy == 'Y':
-        print('installing syllapy:')
+        print('Installing syllapy...')
         subprocess.run([sys.executable, "-m", "pip", "install", 'syllapy'], check=True)
         print("Installation Successful")
-    try:
         import syllapy
-    except ImportError:
-        print("One or more packages still missing. Please see the README.MD file, or try installing pip and syllapy "
-          "through the bash console. ")
-        exit()
+        
+if download_syllapy == 'Y' or download_pip == 'Y' or download_setuptools == 'Y':
+    print('NOTICE:\nIn the case that this program crashes after installing all necessary recourses, '
+          'please just run the program again.\nThis is normal, as your IDE may need to restart in order to '
+          "use it's new installations.\n\n")
+        
 
 
 def Vowel_Count(fullText):

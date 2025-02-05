@@ -11,7 +11,7 @@ Description:
     number of words, sentences, and syllables found within the file's text. In addition, this program also uses
     unique formulas to determine the academic grade and skill level of the text file's author.
 
-Requirements
+
 ## Requirements
 
 Before running `TextAnalysis.py`, please ensure you have the following installations:
