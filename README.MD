@@ -1,20 +1,26 @@
 # Flesch_Text_Analysis_Debug_Assignment
- 
-An example of the program output is shown below:
-"""
-Enter the file name: text.txt
-The Flesch Index is 72.80706451612906
-The Grade Level Equivalent is 6
-5 sentences
-62 words
-89 syllables
 
-"""
+Program Name: textanalysis.py
 
-"E:\(A) IVY TECH WORK\SDEV140\(A) repositories\Flesch_Text_Analysis_Debug_Assignment\venv\Scripts\python.exe" "E:\(A) IVY TECH WORK\SDEV140\(A) repositories\Flesch_Text_Analysis_Debug_Assignment\FleschTextAnalysisWithBug.py" 
-Enter the file name: text.txt
-The Flesch Index is 55.068354838709695
-The Grade Level Equivalent is 9
-5 sentences
-62 words
-102 syllables
+Authors:
+    Miles Butler
+    William Ruben
+
+Description:
+    This program allows the user to select a text file (txt, rtf, MD, etc.) by entering its name before displaying the
+    number of words, sentences, and syllables found within the file's text. In addition, this program also uses
+    unique formulas to determine the academic grade and skill level of the text file's author.
+
+Requirements
+## Requirements
+
+Before running `TextAnalysis.py`, please ensure you have the following installations:
+
+### **1. Python Version**
+- Python **3.6** or later is required.
+
+### **2. Required Packages**
+The program depends on the `syllapy` package. You can install it using:
+
+```sh
+pip install syllapy

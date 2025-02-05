@@ -1,18 +1,17 @@
 """
-Program Name: textanalysis.py
+Program Name: TextAnalysis.py
 
 Authors:
     Miles Butler
     William Ruben
 
 Description:
-    This program allows the user to select a text file (txt, rtf, MD, etc) by entering its name before displaying the
-    number of words, sentences, and syllables found within the file's text. In adition, this program also 
+    This program allows the user to select a text file (txt, rtf, MD, etc.) by entering its name before displaying the
+    number of words, sentences, and syllables found within the file's text. In addition, this program also uses
+    unique formulas to determine the academic grade and skill level of the text file's author.
     
 Date Published: 2025-02-05
 
-
-   
 """
 
 import syllapy
@@ -30,7 +29,7 @@ def Vowel_Count(fullText):
     textNumList = []
     fullText = fullText.split()
     for word in fullText:
-        x = int(syllapy._syllables(word))
+        x = int(syllapy.count(word))
         textNumList.append(x)
     return sum(textNumList)
 while True:
