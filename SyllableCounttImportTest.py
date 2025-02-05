@@ -1,4 +1,3 @@
-#import syllapy
-#print('hi'
-import sys
-print(sys.executable)
+import syllapy
+print('hi')
+print(syllapy.count('example'))
