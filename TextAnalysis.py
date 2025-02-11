@@ -32,7 +32,7 @@ if download_pip == 'Y':
 try:
     import setuptools
 except ImportError:
-    download_setuptools = input("A small package if pip installation tools are required to run this program, "
+    download_setuptools = input("A small package of pip installation tools are required to run this program, "
                                 "but they weren't found within your directory\nWould you like to install them now?"
                                 " (y/n): ").upper()
     if download_setuptools == 'Y':
